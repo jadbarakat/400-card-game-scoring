@@ -24,7 +24,7 @@ export default function AppButton({ title, onPress }: AppButtonProps) {
       }}
       onPress={onPress}
     >
-      <AppText style={{ color: AppDarkTheme.colors.text }}>{title}</AppText>
+      <AppText style={{ color: AppDarkTheme.colors.text, fontWeight: "600" }}>{title}</AppText>
     </TouchableOpacity>
   );
 }

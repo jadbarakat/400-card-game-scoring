@@ -53,14 +53,28 @@ export default function PlayersInputScreen() {
     };
 
     setPlayers((prev) => {
-      if (!Array.isArray(prev)) return prev;
-
+      if (!Array.isArray(prev)) return [playerOne, playerTwo];
       return [...prev, playerOne, playerTwo];
+    });
+
+    const teamTwo = {
+      id: 1,
+      teamName: teamTwoName,
+      players: [
+        { id: 2, playerName: playerOneName, teamName: teamTwoName },
+        { id: 3, playerName: playerTwoName, teamName: teamTwoName },
+      ],
+    };
+
+    setTeams((prev) => {
+      if (Array.isArray(prev)) {
+        return [...prev, teamTwo];
+      }
+      return [teamTwo];
     });
 
     Keyboard.dismiss();
     router.push("/playing-order");
-    // router.push("/main-game-screen");
   };
 
   return (

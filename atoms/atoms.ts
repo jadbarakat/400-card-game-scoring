@@ -1,62 +1,60 @@
-import { Player, Team } from "@/types/types";
+import { Player, Round, Rounds, Team, TotalScore } from "@/types/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { atom } from "jotai";
 import { atomWithStorage, createJSONStorage } from "jotai/utils";
 
-// AsyncStorage.clear();
+const storage = createJSONStorage<Player[]>(() => AsyncStorage);
 
-export const teamsAtom = atomWithStorage<Team[]>(
-  "teams",
-  [],
-  createJSONStorage(() => AsyncStorage)
-);
+export const playersAtom = atomWithStorage<Player[]>("players", [], storage);
+export const teamsAtom = atom<Team[]>([]);
 
-export const playersAtom = atomWithStorage<Player[]>(
-  "players",
-  [],
-  createJSONStorage(() => AsyncStorage)
-);
-
-export const totalScoresAtom = atomWithStorage("totalScores", [
-  { playerId: 0, playerTotalScore: 20 },
-  { playerId: 1, playerTotalScore: 20 },
-  { playerId: 2, playerTotalScore: 20 },
-  { playerId: 3, playerTotalScore: 20 },
-]);
-
-const examplePlayers = [
-  { id: 0, name: "Jad", teamName: "Champs" },
-  { id: 1, name: "Pat", teamName: "Champs" },
-  { id: 2, name: "Jase", teamName: "Losers" },
-  { id: 3, name: "Tex", teamName: "Losers" },
-];
-
-const exampleTeams = [
+export const currentRoundAtom = atom<Round | null>(null);
+export const roundsAtom = atom<Rounds[]>([
   {
     id: 0,
-    teamName: "Champs",
-    players: [
-      {
-        id: 0,
-        playerName: "Jad",
-      },
-      {
-        id: 1,
-        playerName: "Pat",
-      },
+    scores: [
+      { playerId: 0, score: 0 },
+      { playerId: 1, score: 0 },
+      { playerId: 2, score: 0 },
+      { playerId: 3, score: 0 },
     ],
   },
   {
     id: 1,
-    teamName: "Losers",
-    players: [
-      {
-        id: 2,
-        playerName: "Jase",
-      },
-      {
-        id: 3,
-        playerName: "Tex",
-      },
+    scores: [
+      { playerId: 0, score: 10 },
+      { playerId: 1, score: 2 },
+      { playerId: 2, score: 3 },
+      { playerId: 3, score: 2 },
     ],
   },
+]);
+
+export const currentDealerAtom = atom<Player | null>(null);
+export const currentCutterAtom = atom<Player | null>(null);
+
+export const totalScoresAtom = atom<TotalScore[]>([
+  { playerId: 0, score: 0 },
+  { playerId: 1, score: 0 },
+  { playerId: 2, score: 0 },
+  { playerId: 3, score: 0 },
+]);
+
+const exampleRounds = [
+  {
+    id: 0,
+    bids: [
+      { playerId: 0, amount: 10 },
+      { playerId: 1, amount: 2 },
+      { playerId: 2, amount: 2 },
+      { playerId: 3, amount: 2 },
+    ],
+  },
+];
+
+const exampleTotalScores = [
+  { playerId: 0, score: 0 },
+  { playerId: 1, score: 0 },
+  { playerId: 2, score: 0 },
+  { playerId: 3, score: 0 },
 ];

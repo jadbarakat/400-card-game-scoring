@@ -31,9 +31,7 @@ export default function RulesSetupScreen() {
           justifyContent: "center",
         }}
       >
-        <AppText style={{ fontWeight: "700", fontSize: 18 }}>
-          {team.teamName}
-        </AppText>
+        <AppText style={{ fontWeight: "700", fontSize: 18 }}>{team.teamName}</AppText>
       </View>
       <View
         style={{

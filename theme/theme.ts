@@ -6,6 +6,7 @@ import {
 
 type CustomColors = NavigationTheme["colors"] & {
   cardHeader: string;
+  secondary: string;
 };
 
 export interface AppTheme extends Omit<NavigationTheme, "colors"> {
@@ -17,6 +18,7 @@ export const AppLightTheme: AppTheme = {
   colors: {
     ...NavigationDefaultTheme.colors,
     primary: "#09769A",
+    secondary: "#8BBEB2",
     background: "#EBEBEB",
     card: "#FFF",
     cardHeader: "#F5F5F5",
@@ -29,6 +31,7 @@ export const AppDarkTheme: AppTheme = {
   colors: {
     ...NavigationDarkTheme.colors,
     primary: "#09769A",
+    secondary: "#8BBEB2",
     background: "#141414",
     card: "#000",
     cardHeader: "#141414",

@@ -8,9 +8,5 @@ interface AppTextProps extends TextProps {
 export default function AppTitle({ children, style }: AppTextProps) {
   const { colors } = useTheme();
 
-  return (
-    <Text style={[{ color: colors.text, fontSize: 30 }, style]}>
-      {children}
-    </Text>
-  );
+  return <Text style={[{ color: colors.text, fontSize: 30 }, style]}>{children}</Text>;
 }

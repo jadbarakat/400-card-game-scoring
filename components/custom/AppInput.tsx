@@ -1,28 +1,18 @@
 import { useTheme } from "@react-navigation/native";
-import {
-  TextInput,
-  TextInputProps,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
 import AppText from "./AppText";
 
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 
 interface AppInputProps extends TextInputProps {
-  label: string;
+  label?: string;
   placeholder: string;
   value: string;
   setValue: (text: string) => void;
 }
 
-export const AppInput = ({
-  label,
-  placeholder,
-  value,
-  setValue,
-}: AppInputProps) => {
+export const AppInput = ({ label, placeholder, value, setValue }: AppInputProps) => {
   const { colors } = useTheme();
 
   const [focused, setFocused] = useState(false);
@@ -84,6 +74,7 @@ export const AppInput = ({
           onChangeText={setValue}
           onFocus={() => setFocused(true)}
           onEndEditing={() => setFocused(false)}
+          selectTextOnFocus={true}
         />
         {value && <ClearIcon />}
       </View>

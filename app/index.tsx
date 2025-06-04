@@ -28,10 +28,7 @@ export default function App() {
       <AppText style={{ paddingBottom: 48 }}>
         Your one-stop-shop to scoring your own 400 card game.
       </AppText>
-      <AppButton
-        title="Start game"
-        onPress={() => router.push("/team-one-entry")}
-      />
+      <AppButton title="Start game" onPress={() => router.push("/team-one-entry")} />
     </View>
   );
 }

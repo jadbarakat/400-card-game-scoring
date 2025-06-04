@@ -54,6 +54,17 @@ export default function PlayersInputScreen() {
 
     setPlayers([playerOne, playerTwo]);
 
+    const teamOne = {
+      id: 0,
+      teamName: teamOneName,
+      players: [
+        { id: 0, playerName: playerOneName, teamName: teamOneName },
+        { id: 1, playerName: playerTwoName, teamName: teamOneName },
+      ],
+    };
+
+    setTeams([teamOne]);
+
     Keyboard.dismiss();
     router.push("/team-two-entry");
   };
@@ -94,10 +105,7 @@ export default function PlayersInputScreen() {
           />
         ))}
       </View>
-      <AppButton
-        title="Enter team two details"
-        onPress={submitTeamOnePlayers}
-      />
+      <AppButton title="Enter team two details" onPress={submitTeamOnePlayers} />
     </KeyboardAvoidingView>
     // </TouchableWithoutFeedback>
   );
